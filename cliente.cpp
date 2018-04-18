@@ -6,7 +6,7 @@
 
  int main(){
     Matriz X(3,3), A(3,3), C(3,3);
-    
+
     A.unit();
     cout << "Matriz identidade:" << endl << A << endl;
     

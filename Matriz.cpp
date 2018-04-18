@@ -9,16 +9,26 @@ Matriz::Matriz(int rows, int cols){
     for (int i = 0; i < rows; i++) this->vetor[i] = (double*) malloc(cols*sizeof(double));
 }
 
+Matriz::Matriz(const Matriz &original){
+    this->rows = original.rows;
+    this->cols = original.cols;
+    this->vetor = original.vetor;
+}
+
 Matriz::~Matriz(){
     int rows = getRows();
     for (int i = 0; i < rows; i++) free(this->vetor[i]);
     free(this->vetor);
 }
 
-double & Matriz::operator()(unsigned int x, unsigned int y){
+double& Matriz::operator()(unsigned int x, unsigned int y){
     if ((x > this->getRows())&&(y > this->getCols())) throw "Índice fora da Matriz.";
     else return vetor[x][y];
 }
+
+/*Matriz& Matriz::operator=(const Matriz &A){
+    if (this == &A) return *this;
+}*/
 
 Matriz& Matriz::operator+=(const Matriz &A){
     if ((A.cols != this->cols)||(A.rows != this->rows)) throw "Matrizes de ordem diferentes. Não foi possível realizar a soma.";
@@ -43,6 +53,22 @@ Matriz& Matriz::operator-=(const Matriz &A){
 
     return *this;
 }
+
+/*Matriz& Matriz::operator*=(const Matriz &A){
+    if (A.cols != this->rows) throw "Ordem incompatível. Não foi possível realizar a multiplicação.";
+
+    Matriz Resultado.zeros();
+
+    for(int i = 0; i < A.rows; i++){
+        for(int j = 0; j < A.cols; j++){
+            for(int k = 0; k < A.rows; k++){
+                Resultado(i, j) = this->vector[i][k]*A.vetor[k][i];
+            }
+        }    
+    }
+    
+    return *this = Resultado;
+}*/
 
 int Matriz::getRows(){
     return this->rows;
