@@ -46,7 +46,7 @@
     int numerocolunas= A.getCols();
     cout << numerolinhas << " " << numerocolunas << endl;
 
-    //delete &A, &C, &X;
+    delete &A, &C, &X;
 
     return 1;
  }

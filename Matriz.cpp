@@ -6,13 +6,23 @@ Matriz::Matriz(int rows, int cols){
     this->rows = rows;
     this->cols = cols;
     this->vetor = (double**) malloc(rows*sizeof(double*));
-    for (int i = 0; i < rows; i++) this->vetor[i] = (double*) malloc(cols*sizeof(double));
+    if (this->vetor == NULL){
+        cerr << "Erro ao alocar matriz." << endl;
+        exit(0);
+    }
+    for (int i = 0; i < rows; i++){
+        this->vetor[i] = (double*) malloc(cols*sizeof(double));
+        if (this->vetor[i] == NULL){
+            cout << "Erro ao alocar matriz." << endl;
+            exit(0);
+        }   
+    }
 }
 
 Matriz::~Matriz(){
     int rows = getRows();
-    for (int i = 0; i < rows; i++) free(this->vetor[i]);
-    free(this->vetor);
+    for (int i = 0; i < rows; i++) delete [] this->vetor[i];
+    delete [] this->vetor;
 }
 
 double& Matriz::operator()(unsigned int x, unsigned int y){
