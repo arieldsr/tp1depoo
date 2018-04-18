@@ -1,9 +1,8 @@
 # Trabalho Intermediário 1 - Conceitos Básicos de POO
-Universidade Federal de Minas Gerais, abril de 2018
-
-Ariel de Souza Ribeiro - http://github.com/arieldsr
-
-João Pedro Temponi de Andrade - 
+Universidade Federal de Minas Gerais, abril de 2018 </br>
+Engenharia de Controle e Automação </br>
+Ariel de Souza Ribeiro - http://github.com/arieldsr </br>
+João Pedro Temponi de Andrade - </br>
 
 ## Tarefa
   Crie uma classe Matriz que permita que sejam feitas operações matemáticas similares às do Matlab para matrizes do double. O seguinte código é um exemplo de programa cliente para a sua classe:
