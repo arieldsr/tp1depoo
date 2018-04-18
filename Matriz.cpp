@@ -21,11 +21,26 @@ double & Matriz::operator()(unsigned int x, unsigned int y){
 }
 
 Matriz& Matriz::operator+=(const Matriz &A){
+    if ((A.cols != this->cols)||(A.rows != this->rows)) throw "Matrizes de ordem diferentes. Não foi possível realizar a soma.";
+
     for(int i = 0; i < A.rows; i++){
         for(int j = 0; j < A.cols; j++){
              this->vetor[i][j] += A.vetor[i][j];
         }    
     }
+
+    return *this;
+}
+
+Matriz& Matriz::operator-=(const Matriz &A){
+    if ((A.cols != this->cols)||(A.rows != this->rows)) throw "Matrizes de ordem diferentes. Não foi possível realizar a subtração.";
+
+    for(int i = 0; i < A.rows; i++){
+        for(int j = 0; j < A.cols; j++){
+             this->vetor[i][j] -= A.vetor[i][j];
+        }    
+    }
+
     return *this;
 }
 

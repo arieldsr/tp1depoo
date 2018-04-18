@@ -17,7 +17,7 @@ class Matriz{
     
     double & operator()(unsigned int x, unsigned int y); //A(x, y) = k;
     Matriz& operator+=(const Matriz &A); //Soma de matrizes
-    //Matriz & operator-=(const Matriz &B); //Subtração de matrizes
+    Matriz & operator-=(const Matriz &B); //Subtração de matrizes
     //Matriz & operator*=(const Matriz &B); //Multiplicação de matrizes
     //A=~C; // A é igual a transposta de C
     //Matriz & operator*=(double x); //Multiplicação por uma constante
