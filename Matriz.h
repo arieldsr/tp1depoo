@@ -15,13 +15,11 @@ class Matriz{
     Matriz(int rows, int cols); //Função construtora
     ~Matriz(); //Função destrutora
     
-    double & operator()(int x, int y); //A(x, y) = k;
-    //Matriz operator+(const Matriz &A, const Matriz &B); //Soma de matrizes
-    //Matriz operator-(const Matriz &A, const Matriz &B);//Subtração de matrizes
-    //Matriz operator*(const Matriz &A, const Matriz &B);//Multiplicação de matrizes
-    //Matriz & operator+=(const Matriz &B); //Soma de matrizes
+    double & operator()(unsigned int x, unsigned int y); //A(x, y) = k;
+    Matriz& operator+=(const Matriz &A); //Soma de matrizes
     //Matriz & operator-=(const Matriz &B); //Subtração de matrizes
     //Matriz & operator*=(const Matriz &B); //Multiplicação de matrizes
+    //A=~C; // A é igual a transposta de C
     //Matriz & operator*=(double x); //Multiplicação por uma constante
     friend std::ostream & operator<<(std::ostream & os, const Matriz &A);
 
@@ -32,6 +30,8 @@ class Matriz{
     int getCols(); //Retorna número de colunas
 };
 
-//A=~C; // A é igual a transposta de C
+//Matriz operator+(const Matriz &A, const Matriz &B); //Soma de matrizes
+//Matriz operator-(const Matriz &A, const Matriz &B);//Subtração de matrizes
+//Matriz operator*(const Matriz &A, const Matriz &B);//Multiplicação de matrizes
 
 #endif

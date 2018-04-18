@@ -15,16 +15,26 @@ Matriz::~Matriz(){
     free(this->vetor);
 }
 
+double & Matriz::operator()(unsigned int x, unsigned int y){
+    if ((x > this->getRows())&&(y > this->getCols())) throw "Índice fora da Matriz.";
+    else return vetor[x][y];
+}
+
+Matriz& Matriz::operator+=(const Matriz &A){
+    for(int i = 0; i < A.rows; i++){
+        for(int j = 0; j < A.cols; j++){
+             this->vetor[i][j] += A.vetor[i][j];
+        }    
+    }
+    return *this;
+}
+
 int Matriz::getRows(){
     return this->rows;
 }
 
 int Matriz::getCols(){
     return this->cols;
-}
-
-double & Matriz::operator()(int x, int y){
-    return vetor[x][y];
 }
 
 void Matriz::zeros(){
