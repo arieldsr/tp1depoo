@@ -9,12 +9,6 @@ Matriz::Matriz(int rows, int cols){
     for (int i = 0; i < rows; i++) this->vetor[i] = (double*) malloc(cols*sizeof(double));
 }
 
-Matriz::Matriz(const Matriz &original){
-    this->rows = original.rows;
-    this->cols = original.cols;
-    this->vetor = original.vetor;
-}
-
 Matriz::~Matriz(){
     int rows = getRows();
     for (int i = 0; i < rows; i++) free(this->vetor[i]);
@@ -57,12 +51,13 @@ Matriz& Matriz::operator-=(const Matriz &A){
 /*Matriz& Matriz::operator*=(const Matriz &A){
     if (A.cols != this->rows) throw "Ordem incompatível. Não foi possível realizar a multiplicação.";
 
-    Matriz Resultado.zeros();
+    Matriz Resultado(this->rows, A.cols);
+    Resultado.zeros();
 
-    for(int i = 0; i < A.rows; i++){
-        for(int j = 0; j < A.cols; j++){
-            for(int k = 0; k < A.rows; k++){
-                Resultado(i, j) = this->vector[i][k]*A.vetor[k][i];
+    for(int i = 0; i < Resultado.rows; i++){
+        for(int j = 0; j < Resultado.cols; j++){
+            for(int k = 0; k < this->cols; k++){
+                Resultado.vetor[i][j] += (this->vetor[i][k])*(A.vetor[k][j]);
             }
         }    
     }
@@ -121,3 +116,17 @@ ostream & operator<<(ostream & os, const Matriz &A){
     }
     return os;
 }
+
+/*Matriz operator+(const Matriz &A, const Matriz &B){
+    Matriz Resultado(A);
+    Resultado += B;
+    return Resultado;
+}*/
+
+/*Matriz operator-(const Matriz &A, const Matriz &B){
+    Matriz Resultado(A);
+    Resultado -= B;
+    return Resultado;
+}*/
+
+//Matriz operator*(const Matriz &A, const Matriz &B)
