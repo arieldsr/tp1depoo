@@ -1,6 +1,8 @@
 # Trabalho Intermediário 1 - Conceitos Básicos de POO
 Universidade Federal de Minas Gerais, abril de 2018
+
 Ariel de Souza Ribeiro - http://github.com/arieldsr
+
 João Pedro Temponi de Andrade - 
 
 ## Tarefa
