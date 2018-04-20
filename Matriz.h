@@ -22,7 +22,7 @@ class Matriz{
     Matriz& operator+=(const Matriz &A); //Soma de matrizes
     Matriz& operator-=(const Matriz &A); //Subtração de matrizes
     Matriz& operator*=(const Matriz &A); //Multiplicação de matrizes
-    Matriz* operator~(); // A é igual a transposta de C
+    Matriz& operator~(); // A é igual a transposta de C
     Matriz & operator*=(double x); //Multiplicação por uma constante
     friend std::ostream & operator<<(std::ostream & os, const Matriz &A);
 
