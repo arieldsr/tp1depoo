@@ -90,7 +90,10 @@ Matriz& Matriz::operator-=(const Matriz &A){
 }
 
 Matriz& Matriz::operator*=(const Matriz &A){
-    if (this->cols != A.rows) throw "Ordem incompatível. Não foi possível realizar a multiplicação.";
+    if (this->cols != A.rows){ 
+        cerr << "Ordem incompatível. Não foi possível realizar a multiplicação." << endl;
+        return *this;
+    }
 
     Matriz Resultado(this->rows, A.cols);
     Resultado.zeros();

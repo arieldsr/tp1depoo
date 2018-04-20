@@ -23,7 +23,7 @@
     cout << "C-=A" << endl << C << endl;
 
     A=C-A; // Subtração
-    cout << "C=C-A" << endl << C << endl;
+    cout << "A=C-A" << endl << A << endl;
 
     A+=A; // Soma
     cout << "A+=A" << endl << A << endl;
