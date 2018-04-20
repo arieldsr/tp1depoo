@@ -90,7 +90,7 @@ Matriz& Matriz::operator-=(const Matriz &A){
 }
 
 /*Matriz& Matriz::operator*=(const Matriz &A){
-    if (A.cols != this->rows) throw "Ordem incompatível. Não foi possível realizar a multiplicação.";
+    if (this->cols != A.rows) throw "Ordem incompatível. Não foi possível realizar a multiplicação.";
 
     Matriz Resultado(this->rows, A.cols);
     Resultado.zeros();
@@ -115,31 +115,26 @@ int Matriz::getCols(){
 }
 
 void Matriz::zeros(){
-    int rows = this->getRows(), cols = this->getCols();
-
-    for (int i = 0; i < rows; i++){
-        for(int j = 0; j < cols; j++){
+    for (int i = 0; i < this->rows; i++){
+        for(int j = 0; j < this->cols; j++){
             this->vetor[i][j] = 0;
         }
     }
 }
 
 void Matriz::ones(){
-    int rows = this->getRows(), cols = this->getCols();
-
-    for (int i = 0; i < rows; i++){
-        for(int j = 0; j < cols; j++){
+    for (int i = 0; i < this->rows; i++){
+        for(int j = 0; j < this->cols; j++){
             this->vetor[i][j] = 1;
         }
     }
 }
 
 void Matriz::unit(){
-    int rows = this->getRows(), cols = this->getCols();
     int minimo;
 
-    if (rows < cols) minimo = rows;
-    else minimo = cols;
+    if (this->rows < this->cols) minimo = this->rows;
+    else minimo = this->cols;
 
     this->zeros();
     for (int i = 0; i < minimo; i++){
@@ -168,4 +163,7 @@ Matriz operator-(const Matriz &A, const Matriz &B){
     return (Resultado -= B);
 }
 
-//Matriz operator*(const Matriz &A, const Matriz &B)
+/*Matriz operator*(const Matriz &A, const Matriz &B){
+    Matriz Resultado(A);
+    return (Resultado *= B);
+}*/
