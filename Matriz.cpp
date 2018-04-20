@@ -89,7 +89,7 @@ Matriz& Matriz::operator-=(const Matriz &A){
     return *this;
 }
 
-/*Matriz& Matriz::operator*=(const Matriz &A){
+Matriz& Matriz::operator*=(const Matriz &A){
     if (this->cols != A.rows) throw "Ordem incompatível. Não foi possível realizar a multiplicação.";
 
     Matriz Resultado(this->rows, A.cols);
@@ -103,8 +103,8 @@ Matriz& Matriz::operator-=(const Matriz &A){
         }    
     }
     
-    return *this = Resultado;
-}*/
+    return (*this = Resultado);
+}
 
 int Matriz::getRows(){
     return this->rows;

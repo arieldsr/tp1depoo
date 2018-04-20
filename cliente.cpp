@@ -39,8 +39,8 @@
     //C=A*X; // multiplicação de matrizes
     //cout << "C=A*X:" << endl << C << endl;
     
-    //C*=X; // multiplicação de matrizes
-    //cout << "C*=X:" << endl << C << endl;
+    C*=X; // multiplicação de matrizes
+    cout << "C*=X:" << endl << C << endl;
     
     cout << C << endl; // Impressão de matrizes
     
