@@ -10,14 +10,15 @@ class Matriz{
     int rows;
     int cols;
     double **vetor;
+    void alocaVetor();
 
     public:
     Matriz(int rows, int cols); //Função construtora
-    //CONSTRUTOR DE CÓPIA
+    Matriz(const Matriz& original);//Construtor de cópia
     ~Matriz(); //Função destrutora
     
     double& operator()(unsigned int x, unsigned int y); //A(x, y) = k;
-    //Matriz& operator=(const Matriz &A); //Operador de atribuição
+    Matriz& operator=(const Matriz &A); //Operador de atribuição
     Matriz& operator+=(const Matriz &A); //Soma de matrizes
     Matriz& operator-=(const Matriz &A); //Subtração de matrizes
     Matriz& operator*=(const Matriz &A); //Multiplicação de matrizes
@@ -32,8 +33,8 @@ class Matriz{
     int getCols(); //Retorna número de colunas
 };
 
-//Matriz operator+(const Matriz &A, const Matriz &B); //Soma de matrizes
-//Matriz operator-(const Matriz &A, const Matriz &B);//Subtração de matrizes
+Matriz operator+(const Matriz &A, const Matriz &B); //Soma de matrizes
+Matriz operator-(const Matriz &A, const Matriz &B);//Subtração de matrizes
 //Matriz operator*(const Matriz &A, const Matriz &B);//Multiplicação de matrizes
 
 #endif

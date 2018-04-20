@@ -16,14 +16,14 @@
     C.zeros();
     cout << "Matriz de zeros:" << endl << C << endl;
 
-    //C=A+A; // Soma
-    //cout << "C=A+A:" << endl << C << endl;
+    C=A+A; // Soma
+    cout << "C=A+A:" << endl << C << endl;
 
     C-=A; // Subtração
     cout << "C-=A" << endl << C << endl;
 
-    //A=C-A; // Subtração
-    //cout << "C=C-A" << endl << C << endl;
+    A=C-A; // Subtração
+    cout << "C=C-A" << endl << C << endl;
 
     A+=A; // Soma
     cout << "A+=A" << endl << A << endl;

@@ -2,26 +2,41 @@
 
  using namespace std;
 
-Matriz::Matriz(int rows, int cols){
-    this->rows = rows;
-    this->cols = cols;
-    this->vetor = (double**) malloc(rows*sizeof(double*));
+void Matriz::alocaVetor(){
+    this->vetor = (double**) malloc(this->rows*sizeof(double*));
     if (this->vetor == NULL){
         cerr << "Erro ao alocar matriz." << endl;
         exit(0);
     }
-    for (int i = 0; i < rows; i++){
-        this->vetor[i] = (double*) malloc(cols*sizeof(double));
+    for (int i = 0; i < this->rows; i++){
+        this->vetor[i] = (double*) malloc(this->cols*sizeof(double));
         if (this->vetor[i] == NULL){
             cout << "Erro ao alocar matriz." << endl;
             exit(0);
         }   
-    }
+    } 
+}
+
+Matriz::Matriz(int rows, int cols){
+    this->rows = rows;
+    this->cols = cols;
+    this->alocaVetor();
+    this->zeros();
+}
+
+Matriz::Matriz(const Matriz& original){
+    this->rows = original.rows;
+    this->cols = original.cols;
+    this->alocaVetor();
+    for (int i = 0; i < this->rows; i++){
+        for (int j = 0; j < this->cols; j++){
+            this->vetor[i][j] = original.vetor[i][j];
+        }
+    }  
 }
 
 Matriz::~Matriz(){
-    int rows = getRows();
-    for (int i = 0; i < rows; i++) delete [] this->vetor[i];
+    for (int i = 0; i < this->rows; i++) delete [] this->vetor[i];
     delete [] this->vetor;
 }
 
@@ -30,31 +45,47 @@ double& Matriz::operator()(unsigned int x, unsigned int y){
     else return vetor[x][y];
 }
 
-/*Matriz& Matriz::operator=(const Matriz &A){
+Matriz& Matriz::operator=(const Matriz &A){
     if (this == &A) return *this;
-}*/
+    if ((this->rows != A.rows)||(this->cols != A.cols)){
+        for (int i = 0; i < rows; i++) delete [] this->vetor[i];
+        delete [] this->vetor;
+        this->rows = A.rows;
+        this->cols = A.cols;
+        this->alocaVetor();
+    }
+    for (int i = 0; i < this->rows; i++){
+        for (int j = 0; j < this->cols; j++){
+            this->vetor[i][j] = A.vetor[i][j];
+        }
+    }
+}
 
 Matriz& Matriz::operator+=(const Matriz &A){
-    if ((A.cols != this->cols)||(A.rows != this->rows)) throw "Matrizes de ordem diferentes. Não foi possível realizar a soma.";
-
-    for(int i = 0; i < A.rows; i++){
-        for(int j = 0; j < A.cols; j++){
-             this->vetor[i][j] += A.vetor[i][j];
-        }    
+    if ((A.cols != this->cols)||(A.rows != this->rows)){
+        cerr << "Matrizes de ordem diferentes. Não foi possível realizar a soma." << endl;
     }
-
+    else{
+        for(int i = 0; i < A.rows; i++){
+            for(int j = 0; j < A.cols; j++){
+                this->vetor[i][j] += A.vetor[i][j];
+            }    
+        }
+    }
     return *this;
 }
 
 Matriz& Matriz::operator-=(const Matriz &A){
-    if ((A.cols != this->cols)||(A.rows != this->rows)) throw "Matrizes de ordem diferentes. Não foi possível realizar a subtração.";
-
-    for(int i = 0; i < A.rows; i++){
-        for(int j = 0; j < A.cols; j++){
-             this->vetor[i][j] -= A.vetor[i][j];
-        }    
+    if ((A.cols != this->cols)||(A.rows != this->rows)){
+        cerr << "Matrizes de ordem diferentes. Não foi possível realizar a subtração." << endl;
     }
-
+    else{
+        for(int i = 0; i < A.rows; i++){
+            for(int j = 0; j < A.cols; j++){
+                this->vetor[i][j] -= A.vetor[i][j];
+            }    
+        }
+    }
     return *this;
 }
 
@@ -127,16 +158,14 @@ ostream & operator<<(ostream & os, const Matriz &A){
     return os;
 }
 
-/*Matriz operator+(const Matriz &A, const Matriz &B){
+Matriz operator+(const Matriz &A, const Matriz &B){
     Matriz Resultado(A);
-    Resultado += B;
-    return Resultado;
-}*/
+    return (Resultado += B);
+}
 
-/*Matriz operator-(const Matriz &A, const Matriz &B){
+Matriz operator-(const Matriz &A, const Matriz &B){
     Matriz Resultado(A);
-    Resultado -= B;
-    return Resultado;
-}*/
+    return (Resultado -= B);
+}
 
 //Matriz operator*(const Matriz &A, const Matriz &B)
