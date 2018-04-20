@@ -2,7 +2,7 @@
 Universidade Federal de Minas Gerais, abril de 2018 </br>
 Engenharia de Controle e Automação </br>
 Ariel de Souza Ribeiro - http://github.com/arieldsr </br>
-João Pedro Temponi de Andrade - </br>
+João Pedro Temponi de Andrade - http://github.com/JhonnyTA </br>
 
 ## Tarefa
   Crie uma classe Matriz que permita que sejam feitas operações matemáticas similares às do Matlab para matrizes do double. O seguinte código é um exemplo de programa cliente para a sua classe:
