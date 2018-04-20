@@ -109,6 +109,29 @@ Matriz& Matriz::operator*=(const Matriz &A){
     return (*this = Resultado);
 }
 
+/*Matriz& Matriz::operator~(){
+
+    Matriz Resultado(this->rows,this->cols);
+    for(int i=0;i < this->rows;i++){
+        for(int j=0;j < this->cols;j++){
+            if(i>=j){
+                Resultado.vetor[i][j]=this->vetor[j][i];
+                Resultado.vetor[j][i]=this->vetor[i][j];
+            }
+        }
+    }
+    return (Resultado);
+}*/
+
+Matriz& Matriz:: operator*=(double x){
+    for(int i=0;i<this->rows;i++){
+        for(int j=0;j<this->cols;j++){
+            this->vetor[i][j]*=x;
+        }
+    }
+    return *this;
+}
+
 int Matriz::getRows(){
     return this->rows;
 }
@@ -166,7 +189,8 @@ Matriz operator-(const Matriz &A, const Matriz &B){
     return (Resultado -= B);
 }
 
-/*Matriz operator*(const Matriz &A, const Matriz &B){
+Matriz operator*(const Matriz &A, const Matriz &B){
     Matriz Resultado(A);
-    return (Resultado *= B);
-}*/
+    Resultado *= B;
+    return (Resultado);
+}
