@@ -30,7 +30,7 @@
 
     C.unit();
     C(1,0) = 42;
-    //A=~C; // A é igual a transposta de C
+    A=~C; // A é igual a transposta de C
     cout << "A=~C:" << endl << A << endl;
     
     X.ones(); // inicializa X com 1s
@@ -53,4 +53,3 @@
 
     return 1;
  }
-
