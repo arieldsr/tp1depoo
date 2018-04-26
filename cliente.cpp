@@ -28,16 +28,19 @@
     A+=A; // Soma
     cout << "A+=A" << endl << A << endl;
 
+    C.unit();
+    C(1,0) = 42;
     //A=~C; // A é igual a transposta de C
+    cout << "A=~C:" << endl << A << endl;
     
     X.ones(); // inicializa X com 1s
     cout << "Matriz de 1s:" << endl << X << endl;
     
-    //X*=2; // multiplicação por uma constante
-    //cout << "X*=2:" << endl << X << endl;
+    X*=2; // multiplicação por uma constante
+    cout << "X*=2:" << endl << X << endl;
     
-    //C=A*X; // multiplicação de matrizes
-    //cout << "C=A*X:" << endl << C << endl;
+    C=A*X; // multiplicação de matrizes
+    cout << "C=A*X:" << endl << C << endl;
     
     C*=X; // multiplicação de matrizes
     cout << "C*=X:" << endl << C << endl;
@@ -47,8 +50,6 @@
     int numerolinhas = A.getRows();
     int numerocolunas= A.getCols();
     cout << numerolinhas << " " << numerocolunas << endl;
-
-    //delete &A, &C, &X;
 
     return 1;
  }

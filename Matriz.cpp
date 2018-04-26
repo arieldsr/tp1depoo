@@ -109,19 +109,18 @@ Matriz& Matriz::operator*=(const Matriz &A){
     return (*this = Resultado);
 }
 
-/*Matriz& Matriz::operator~(){
-
-    Matriz Resultado(this->rows,this->cols);
-    for(int i=0;i < this->rows;i++){
-        for(int j=0;j < this->cols;j++){
+Matriz& Matriz::operator~(){
+    Matriz static Resultado(this->rows, this->cols);
+    for(int i=0; i < Resultado.rows; i++){
+        for(int j=0; j < Resultado.cols; j++){
             if(i>=j){
-                Resultado.vetor[i][j]=this->vetor[j][i];
-                Resultado.vetor[j][i]=this->vetor[i][j];
+                Resultado.vetor[i][j] = this->vetor[j][i];
+                Resultado.vetor[j][i] = this->vetor[i][j];
             }
         }
     }
     return (Resultado);
-}*/
+}
 
 Matriz& Matriz:: operator*=(double x){
     for(int i=0;i<this->rows;i++){
