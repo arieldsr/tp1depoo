@@ -21,6 +21,7 @@ Matriz::Matriz(int rows, int cols){
     this->rows = rows;
     this->cols = cols;
     this->alocaVetor();
+    //Para evitar que o operador tente recuperar lixo da Matriz:
     this->zeros();
 }
 
@@ -36,8 +37,13 @@ Matriz::Matriz(const Matriz& original){
 }
 
 Matriz::~Matriz(){
-    for (int i = 0; i < this->rows; i++) delete [] this->vetor[i];
+    for (int i = 0; i < this->rows; i++){
+        delete [] this->vetor[i];
+        //Para que o local para o qual o vetor apontava não possa ser acessado após sua desalocação:
+        this->vetor[i] = nullptr; 
+    }
     delete [] this->vetor;
+    this->vetor = nullptr;
 }
 
 double& Matriz::operator()(unsigned int x, unsigned int y){
@@ -48,6 +54,7 @@ double& Matriz::operator()(unsigned int x, unsigned int y){
 Matriz& Matriz::operator=(const Matriz &A){
     if (this == &A) return *this;
     if ((this->rows != A.rows)||(this->cols != A.cols)){
+        //Aqui não há necessidade de fazer = nullptr porque o vetor apontará para um lugar novo.
         for (int i = 0; i < rows; i++) delete [] this->vetor[i];
         delete [] this->vetor;
         this->rows = A.rows;
